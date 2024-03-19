@@ -1,0 +1,166 @@
+<?php
+
+/**
+ * Chatbot ILIAS plugin for the assistance system developed as part of the VerDatAs project
+ * Copyright (C) 2023-2024 TU Dresden (Tommy Kubica)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ * Class ilVerDatAsBotConfigGUI
+ *
+ * @author tud <tommy.kubica@tu-dresden.de>
+ * @ilCtrl_IsCalledBy ilVerDatAsBotConfigGUI: ilObjComponentSettingsGUI
+ *
+ */
+class ilVerDatAsBotConfigGUI extends ilPluginConfigGUI
+{
+    private \ILIAS\DI\Container $dic;
+    protected ilVerDatAsBotPlugin $pl;
+
+    /**
+     * The constructor of ilVerDatAsBotConfigGUI that defines the container variable and retrieves the instance of the ilVerDatAsBotPlugin.
+     */
+    public function __construct()
+    {
+        global $DIC;
+        $this->dic = $DIC;
+        $this->pl = ilVerDatAsBotPlugin::getInstance();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function performCommand(string $cmd): void
+    {
+        $this->{$cmd}();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function configure(ilPropertyFormGUI $form = null): void
+    {
+        if (!count(ilCmiXapiLrsTypeList::getTypesData(false))) {
+            $this->dic->ui()->mainTemplate()->setOnScreenMessage('info', $this->pl->txt('missing_lrs_type'), true);
+            return;
+        }
+
+        if ($form === null) {
+            $form = $this->buildForm();
+        }
+
+        $this->dic->ui()->mainTemplate()->setContent($form->getHTML());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function save()
+    {
+        $form = $this->buildForm();
+
+        if (!$form->checkInput()) {
+            return $this->configure($form);
+        }
+
+        $this->writeBackendURL($form->getInput('backend_url'));
+        $this->writeLrsTypeId($form->getInput('lrs_type_id'));
+
+        $this->dic->ctrl()->redirect($this, 'configure');
+    }
+
+    /**
+     * Build the form for configuring the plugin.
+     *
+     * @return ilPropertyFormGUI
+     */
+    protected function buildForm(): ilPropertyFormGUI
+    {
+        $form = new ilPropertyFormGUI();
+        $form->setFormAction($this->dic->ctrl()->getFormAction($this));
+        $form->addCommandButton('save', $this->dic->language()->txt('save'));
+        $form->setTitle($this->pl->txt('configuration'));
+
+        // Backend URL
+        $backendURLItem = new ilTextInputGUI($this->pl->txt('backend_url'), 'backend_url');
+        $backendURLItem->setRequired(true);
+
+        $backendURLItem->setValue($this->readBackendURL());
+
+        $form->addItem($backendURLItem);
+
+        // LRS type
+        $lrsTypeItem = new ilRadioGroupInputGUI($this->pl->txt('lrs_type'), 'lrs_type_id');
+        $lrsTypeItem->setRequired(true);
+
+        $types = ilCmiXapiLrsTypeList::getTypesData(false);
+
+        foreach ($types as $type) {
+            $option = new ilRadioOption($type['title'], $type['type_id'], $type['description']);
+            $lrsTypeItem->addOption($option);
+        }
+
+        $lrsTypeItem->setValue($this->readLrsTypeId());
+
+        $form->addItem($lrsTypeItem);
+
+        return $form;
+    }
+
+    /**
+     * Read the defined backend URL from the settings.
+     *
+     * @return string
+     */
+    protected function readBackendURL(): string
+    {
+        $settings = new ilSetting(ilVerDatAsBotPlugin::PLUGIN_ID);
+        return $settings->get('backend_url');
+    }
+
+    /**
+     * Write the defined backend URL into the settings.
+     *
+     * @var string $backendURL
+     */
+    protected function writeBackendURL(string $backendURL)
+    {
+        $settings = new ilSetting(ilVerDatAsBotPlugin::PLUGIN_ID);
+        $settings->set('backend_url', $backendURL);
+    }
+
+    /**
+     * Read the selected LRS type from the settings.
+     *
+     * @return int
+     */
+    protected function readLrsTypeId(): int
+    {
+        $settings = new ilSetting(ilVerDatAsBotPlugin::PLUGIN_ID);
+        return $settings->get('lrs_type_id', 0);
+    }
+
+    /**
+     * Write the selected LRS type into the settings.
+     *
+     * @var int $lrsTypeId
+     */
+    protected function writeLrsTypeId(int $lrsTypeId)
+    {
+        $settings = new ilSetting(ilVerDatAsBotPlugin::PLUGIN_ID);
+        $settings->set('lrs_type_id', $lrsTypeId);
+    }
+}
