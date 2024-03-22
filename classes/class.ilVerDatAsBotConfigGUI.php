@@ -21,7 +21,7 @@
 /**
  * Class ilVerDatAsBotConfigGUI
  *
- * @author tud <tommy.kubica@tu-dresden.de>
+ * @author TU Dresden <tommy.kubica@tu-dresden.de>
  * @ilCtrl_IsCalledBy ilVerDatAsBotConfigGUI: ilObjComponentSettingsGUI
  *
  */

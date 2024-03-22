@@ -19,8 +19,8 @@
  */
 
 $id = "vbot";
-$version = "0.2.1";
+$version = "0.2.2";
 $ilias_min_version = "8.0";
 $ilias_max_version = "8.999";
-$responsible = "tud";
+$responsible = "TU Dresden";
 $responsible_mail = "tommy.kubica@tu-dresden.de";

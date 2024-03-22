@@ -23,7 +23,7 @@ use GuzzleHttp\Client as HttpClient;
 /**
  * Class ilVerDatAsBotHttpRequest
  *
- * @author Tommy Kubica <tommy.kubica@tu-dresden.de>
+ * @author TU Dresden <tommy.kubica@tu-dresden.de>
  * @ilCtrl_isCalledBy ilVerDatAsBotHttpRequest: ilVerDatAsBotUIHookGUI
  */
 class ilVerDatAsBotHttpRequest
