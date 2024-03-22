@@ -25,7 +25,7 @@ Locate to `Administration | Extending ILIAS | Plugins` and install, configure an
 
 Define the following settings:
 
-* Backend URL (e.g., `https://tud-tas.example.com`)
+* TAS-Backend URL (e.g., `https://tud-tas.example.com`)
 * LRS-Type (i.e., an LRS type created in `Administration | Extending ILIAS | LRS`)
 
 ## Usage
@@ -46,5 +46,5 @@ This plugin is licensed under the GPL v3 License (for further information, see [
 ## Libraries used by this plugin
 
 * Guzzle: an extensible PHP HTTP client – MIT license
-* VerDatAs-Chatbot: the frontend application of the chatbot for the assistance system – (extended) GPL v3 license – retrieve the code and license information here: [templates/main.js](templates/main.js)
+* [tud-chatbot](https://github.com/VerDatAs/tud-chatbot): the frontend application of the chatbot for the assistance system – (extended) GPL v3 license – retrieve the code and license information here: [templates/main.js](templates/main.js)
   * Please find the licenses of the third-party libraries used by the VerDatAs-Chatbot here: [templates/vendor.LICENSE.txt](templates/vendor.LICENSE.txt)

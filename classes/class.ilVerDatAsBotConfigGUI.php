@@ -94,7 +94,7 @@ class ilVerDatAsBotConfigGUI extends ilPluginConfigGUI
         $form->addCommandButton('save', $this->dic->language()->txt('save'));
         $form->setTitle($this->pl->txt('configuration'));
 
-        // Backend URL
+        // TAS-Backend URL
         $backendURLItem = new ilTextInputGUI($this->pl->txt('backend_url'), 'backend_url');
         $backendURLItem->setRequired(true);
 
@@ -121,7 +121,7 @@ class ilVerDatAsBotConfigGUI extends ilPluginConfigGUI
     }
 
     /**
-     * Read the defined backend URL from the settings.
+     * Read the defined TAS-Backend URL from the settings.
      *
      * @return string
      */
@@ -132,7 +132,7 @@ class ilVerDatAsBotConfigGUI extends ilPluginConfigGUI
     }
 
     /**
-     * Write the defined backend URL into the settings.
+     * Write the defined TAS-Backend URL into the settings.
      *
      * @var string $backendURL
      */
