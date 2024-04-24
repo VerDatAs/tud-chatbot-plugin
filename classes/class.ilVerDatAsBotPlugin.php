@@ -20,6 +20,7 @@
 
 /**
  * Class ilVerDatAsBotPlugin
+ *
  * @author TU Dresden <tommy.kubica@tu-dresden.de>
  */
 class ilVerDatAsBotPlugin extends ilUserInterfaceHookPlugin
