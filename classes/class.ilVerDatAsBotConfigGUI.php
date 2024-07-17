@@ -128,7 +128,7 @@ class ilVerDatAsBotConfigGUI extends ilPluginConfigGUI
     protected function readBackendURL(): string
     {
         $settings = new ilSetting(ilVerDatAsBotPlugin::PLUGIN_ID);
-        return $settings->get('backend_url');
+        return $settings->get('backend_url', '');
     }
 
     /**
