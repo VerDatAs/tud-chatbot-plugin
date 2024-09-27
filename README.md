@@ -41,9 +41,9 @@ This plugin is licensed under the GPL v3 License (for further information, see [
 ## Libraries used
 
 * Guzzle: an extensible PHP HTTP client – MIT license – https://github.com/guzzle/guzzle
-* [tud-chatbot](https://github.com/VerDatAs/tud-chatbot) (version [0.0.2](https://github.com/VerDatAs/tud-chatbot/releases/tag/0.0.2)): the frontend application of the chatbot for the assistance system – GPL v3 license
+* [tud-chatbot](https://github.com/VerDatAs/tud-chatbot) (version [0.0.3](https://github.com/VerDatAs/tud-chatbot/releases/tag/0.0.3)): the frontend application of the chatbot for the assistance system – GPL v3 license
   * Retrieve the code and license information here: [templates/main.js](templates/main.js)
-  * The following libraries are used by [tud-chatbot (version 0.0.2)](https://github.com/VerDatAs/tud-chatbot/releases/tag/0.0.2):
+  * The following libraries are used by [tud-chatbot (version 0.0.3)](https://github.com/VerDatAs/tud-chatbot/releases/tag/0.0.3):
 
 |    Name    |   Version  |   License  |     URL    |
 | ---------- | ---------- | ---------- | ---------- |
@@ -78,12 +78,12 @@ This plugin is licensed under the GPL v3 License (for further information, see [
 | mime-db | 1.52.0 | MIT | https://github.com/jshttp/mime-db |
 | mime-types | 2.1.35 | MIT | https://github.com/jshttp/mime-types |
 | nanoid | 3.3.7 | MIT | https://github.com/ai/nanoid |
-| picocolors | 1.0.1 | ISC | https://github.com/alexeyraspopov/picocolors |
+| picocolors | 1.1.0 | ISC | https://github.com/alexeyraspopov/picocolors |
 | pinia-plugin-persistedstate | 3.2.1 | MIT | https://github.com/prazdevs/pinia-plugin-persistedstate |
 | pinia | 2.2.1 | MIT | https://github.com/vuejs/pinia |
-| postcss | 8.4.41 | MIT | https://github.com/postcss/postcss |
+| postcss | 8.4.47 | MIT | https://github.com/postcss/postcss |
 | proxy-from-env | 1.1.0 | MIT | https://github.com/Rob--W/proxy-from-env |
-| source-map-js | 1.2.0 | BSD-3-Clause | https://github.com/7rulnik/source-map-js |
+| source-map-js | 1.2.1 | BSD-3-Clause | https://github.com/7rulnik/source-map-js |
 | to-fast-properties | 2.0.0 | MIT | https://github.com/sindresorhus/to-fast-properties |
 | typescript | 5.4.5 | Apache-2.0 | https://github.com/Microsoft/TypeScript |
 | vue-demi | 0.13.11 | MIT | https://github.com/antfu/vue-demi |
